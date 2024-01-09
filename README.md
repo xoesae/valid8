@@ -73,6 +73,24 @@ $validator->validate()
 $validator->errors();
 ```
 
+working with customizable error messages:
+- Use '{field}' to replace the name of field
+- If is a custom rule, you can customize the message template however you want
+- Use 
+
+```php
+$validator = new \Valid8\Validator(
+    ['name' => 'xoesae'], // data
+    ['name' => ['required', new CustomRule()]], // rules
+    [
+        'required' => '{field} is missing.',
+        CustomRule::class => '{field} not is a int'
+    ] // Custom error messages
+);
+$validator->validate()
+$validator->errors();
+```
+
 # Default rules
 
 - Required: verify if field is present and not empty.
