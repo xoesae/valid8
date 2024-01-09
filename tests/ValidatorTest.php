@@ -81,6 +81,16 @@ class ValidatorTest extends TestCase
         $this->assertEmpty($validator->errors());
     }
 
+    public function testValidatorWithDefaultAndCustomRules(): void
+    {
+        $validator = new Validator(
+            ['amount' => 12],
+            ['amount' => ['required', new CustomRule()]]
+        );
+        $this->assertTrue($validator->validate());
+        $this->assertEmpty($validator->errors());
+    }
+
     public function testCustomErrorMessage(): void
     {
         $validator = new Validator(['name' => null], ['name' => 'required'], ['required' => '{field} is missing.']);
