@@ -1,10 +1,10 @@
 # Valid8: a PHP package for validation
 
-Validations in a simple and fast way.
+Validations in a simple and fast way. :elephant:
 
 # Installation
 
-In progress :construction:
+In progress :construction: :construction_worker:
 
 # Usage
 
@@ -78,4 +78,4 @@ $validator->errors();
 - Required: verify if field is present and not empty.
 
 # Contributing
-Check the CONTRIBUTING.md
+Make a Pull Request for the repository, adding its functionality along with the tests. Make sure your change doesn't break previous versions. :smile:
