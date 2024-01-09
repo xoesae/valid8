@@ -1,11 +1,11 @@
 <?php
 
-namespace Xoesae\Valid8\Test;
+namespace Valid8\Test;
 
 use PHPUnit\Framework\TestCase;
-use Xoesae\Valid8\Test\Helper\CustomRule;
-use Xoesae\Valid8\Test\Helper\RequiredValidator;
-use Xoesae\Valid8\Validator;
+use Valid8\Test\Helper\CustomRule;
+use Valid8\Test\Helper\RequiredValidator;
+use Valid8\Validator;
 
 class ValidatorTest extends TestCase
 {
@@ -69,6 +69,13 @@ class ValidatorTest extends TestCase
             ['amount' => 12],
             ['amount' => new CustomRule()]
         );
+        $this->assertTrue($validator->validate());
+        $this->assertEmpty($validator->errors());
+    }
+
+    public function testValidatorWithoutRules(): void
+    {
+        $validator = new Validator(['name' => null]);
         $this->assertTrue($validator->validate());
         $this->assertEmpty($validator->errors());
     }

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Xoesae\Valid8\Rules;
+namespace Valid8\Rules;
 
 class Required implements Rule
 {

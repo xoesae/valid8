@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Xoesae\Valid8\Test\Rules;
+namespace Valid8\Test\Rules;
 
 use PHPUnit\Framework\TestCase;
-use Xoesae\Valid8\Validator;
+use Valid8\Validator;
 
 final class RequiredTest extends TestCase
 {

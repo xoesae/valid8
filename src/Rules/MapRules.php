@@ -1,6 +1,6 @@
 <?php
 
-namespace Xoesae\Valid8\Rules;
+namespace Valid8\Rules;
 
 class MapRules
 {

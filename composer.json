@@ -1,7 +1,11 @@
 {
     "name": "xoesae/valid8",
     "description": "A lightweight php validator",
-    "keywords": ["validator", "ligth", "valid"],
+    "keywords": [
+        "validator",
+        "ligth",
+        "valid"
+    ],
     "type": "library",
     "require": {
         "php": ">=8.2"
@@ -11,12 +15,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Xoesae\\Valid8\\": "src/"
+            "Valid8\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Xoesae\\Valid8\\Test\\": "tests/"
+            "Valid8\\Test\\": "tests/"
         }
     },
     "scripts": {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Xoesae\Valid8\Test\Helper;
+namespace Valid8\Test\Helper;
 
-use Xoesae\Valid8\Validator;
+use Valid8\Validator;
 
 class RequiredValidator extends Validator
 {

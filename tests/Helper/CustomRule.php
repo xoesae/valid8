@@ -1,8 +1,8 @@
 <?php
 
-namespace Xoesae\Valid8\Test\Helper;
+namespace Valid8\Test\Helper;
 
-use Xoesae\Valid8\Rules\Rule;
+use Valid8\Rules\Rule;
 
 class CustomRule implements Rule
 {

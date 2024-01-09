@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Xoesae\Valid8;
+namespace Valid8;
 
-use Xoesae\Valid8\Rules\MapRules;
-use Xoesae\Valid8\Rules\Rule;
+use Valid8\Rules\MapRules;
+use Valid8\Rules\Rule;
 
 class Validator
 {
