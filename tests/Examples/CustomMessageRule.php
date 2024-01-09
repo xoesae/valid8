@@ -14,8 +14,6 @@ class CustomMessageRule implements Rule
         $this->field = $field;
         $this->message = is_null($message) ? '{field} must be equal to an integer.' : $message;
 
-        var_dump($message);
-
         return is_int($data);
     }
 
