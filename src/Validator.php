@@ -11,11 +11,13 @@ class Validator
     private array $data;
     private array $rules;
     private array $errors = [];
+    private array $messages;
 
-    public function __construct(array $data, array $rules = [])
+    public function __construct(array $data, array $rules = [], $messages = [])
     {
         $this->data = $data;
         $this->rules = empty($rules) ? static::rules() : $rules;
+        $this->messages = $messages;
     }
 
     private function appendError(string $field, string $message): void
@@ -32,11 +34,24 @@ class Validator
         return new (MapRules::getRule($rule))();
     }
 
+    private function getRuleName(string|Rule $rule, Rule $instance): string
+    {
+        if ($rule instanceof Rule) {
+            return get_class($instance);
+        }
+
+        return $rule;
+    }
+
     private function validateRule(string $field, string|Rule $rule): void
     {
         $ruleInstance = self::getRuleInstance($rule);
+        $ruleName = $this->getRuleName($rule, $ruleInstance);
 
-        if (! $ruleInstance->validate($field, $this->data[$field] ?? null)) {
+        $data = $this->data[$field] ?? null;
+        $message = $this->messages[$ruleName] ?? null;
+
+        if (! $ruleInstance->validate($field, $data, $message)) {
             $this->appendError($field, $ruleInstance->error());
         }
     }

@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
 
-namespace Valid8\Rules;
+namespace Valid8\Test\Examples;
 
-class Required implements Rule
+use Valid8\Rules\Rule;
+
+class CustomMessageRule implements Rule
 {
     protected string $field;
     protected string $message;
@@ -10,13 +12,11 @@ class Required implements Rule
     public function validate(string $field, mixed $data, string $message = null): bool
     {
         $this->field = $field;
-        $this->message = is_null($message) ? '{field} is required.' : $message;
+        $this->message = is_null($message) ? '{field} must be equal to an integer.' : $message;
 
-        if (is_array($data)) {
-            return !empty($data);
-        }
+        var_dump($message);
 
-        return !is_null($data) && $data != '';
+        return is_int($data);
     }
 
     public function error(): string

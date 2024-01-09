@@ -3,8 +3,9 @@
 namespace Valid8\Test;
 
 use PHPUnit\Framework\TestCase;
-use Valid8\Test\Helper\CustomRule;
-use Valid8\Test\Helper\RequiredValidator;
+use Valid8\Test\Examples\CustomMessageRule;
+use Valid8\Test\Examples\CustomRule;
+use Valid8\Test\Examples\RequiredValidator;
 use Valid8\Validator;
 
 class ValidatorTest extends TestCase
@@ -78,5 +79,21 @@ class ValidatorTest extends TestCase
         $validator = new Validator(['name' => null]);
         $this->assertTrue($validator->validate());
         $this->assertEmpty($validator->errors());
+    }
+
+    public function testCustomErrorMessage(): void
+    {
+        $validator = new Validator(['name' => null], ['name' => 'required'], ['required' => '{field} is missing.']);
+        $this->assertSame($validator->errors()['name'], 'name is missing.');
+    }
+
+    public function testCustomErrorMessageWithCustomRule(): void
+    {
+        $validator = new Validator(
+            ['amount' => 'test'],
+            ['amount' => new CustomMessageRule()],
+            [CustomMessageRule::class => 'custom message.']
+        );
+        $this->assertSame($validator->errors()['amount'], 'custom message.');
     }
 }

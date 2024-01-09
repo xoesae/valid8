@@ -1,6 +1,6 @@
 <?php
 
-namespace Valid8\Test\Helper;
+namespace Valid8\Test\Examples;
 
 use Valid8\Rules\Rule;
 
@@ -8,7 +8,7 @@ class CustomRule implements Rule
 {
     protected string $field;
 
-    public function validate(string $field, mixed $data): bool
+    public function validate(string $field, mixed $data, string $message = null): bool
     {
         $this->field = $field;
 

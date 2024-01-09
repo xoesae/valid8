@@ -1,6 +1,6 @@
 <?php
 
-namespace Valid8\Test\Helper;
+namespace Valid8\Test\Examples;
 
 use Valid8\Validator;
 
