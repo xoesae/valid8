@@ -118,4 +118,16 @@ class ValidatorTest extends TestCase
         $this->assertFalse($validator->validate());
         $this->assertSame($validator->errors()['name'], 'name é obrigatório.');
     }
+
+    public function testTranslateField(): void
+    {
+        $validator = new Validator(
+            ['name' => null],
+            ['name' => 'required'],
+            fields: ['name' => 'nome'],
+            lang: 'pt-br',
+        );
+        $this->assertFalse($validator->validate());
+        $this->assertSame($validator->errors()['nome'], 'nome é obrigatório.');
+    }
 }

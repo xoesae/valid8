@@ -15,11 +15,12 @@ class Validator
     private array $rules;
     private array $errors = [];
     private array $messages;
-    private array $translate;
+    private array $fields;
 
-    public function __construct(array $data, array $rules = [], $messages = [], string $lang = 'en', string $langDirectory = 'lang')
+    public function __construct(array $data, array $rules = [], array $messages = [], array $fields = [], string $lang = 'en', string $langDirectory = 'lang')
     {
         $this->data = $data;
+        $this->fields = $fields;
         $this->rules = empty($rules) ? static::rules() : $rules;
         $translate = $this->getLang($lang, $langDirectory);
 
@@ -58,6 +59,7 @@ class Validator
         $ruleInstance = self::getRuleInstance($rule);
         $ruleName = $this->getRuleName($rule, $ruleInstance);
 
+        $field = $this->fields[$field] ?? $field;
         $data = $this->data[$field] ?? null;
         $message = $this->messages[$ruleName] ?? null;
 
