@@ -106,4 +106,16 @@ class ValidatorTest extends TestCase
         );
         $this->assertSame($validator->errors()['amount'], 'custom message.');
     }
+
+    public function testTranslateFile(): void
+    {
+        $validator = new Validator(
+            ['name' => null],
+            ['name' => 'required'],
+            lang: 'pt-br',
+            langDirectory: 'lang',
+        );
+        $this->assertFalse($validator->validate());
+        $this->assertSame($validator->errors()['name'], 'name é obrigatório.');
+    }
 }

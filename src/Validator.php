@@ -4,20 +4,30 @@ namespace Valid8;
 
 use Valid8\Rules\MapRules;
 use Valid8\Rules\Rule;
+use Valid8\Traits\ResolveLangPath;
 
 class Validator
 {
+    use ResolveLangPath;
+
     private bool $isValidated = false;
     private array $data;
     private array $rules;
     private array $errors = [];
     private array $messages;
+    private array $translate;
 
-    public function __construct(array $data, array $rules = [], $messages = [])
+    public function __construct(array $data, array $rules = [], $messages = [], string $lang = 'en', string $langDirectory = 'lang')
     {
         $this->data = $data;
         $this->rules = empty($rules) ? static::rules() : $rules;
-        $this->messages = $messages;
+        $translate = $this->getLang($lang, $langDirectory);
+
+        foreach ($messages as $rule => $message) {
+            $translate[$rule] = $message;
+        }
+
+        $this->messages = $translate;
     }
 
     private function appendError(string $field, string $message): void
