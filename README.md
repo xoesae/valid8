@@ -32,10 +32,24 @@ Another valid8 approach is to extend the validator class to create a custom vali
 ```php
 class UserValidator extends \Valid8\Validator
 {
-    protected function rules(): array
+    protected static function rules(): array
     {
         return [
             'name' => ['required'],
+        ];
+    }
+    
+    protected static function messages(): array
+    {
+        return [
+            'required' => '{field} is required.'
+        ];
+    }
+
+    protected static function fields(): array
+    {
+        return [
+            'name' => 'name',
         ];
     }
 }
@@ -76,7 +90,6 @@ $validator->errors();
 working with customizable error messages:
 - Use '{field}' to replace the name of field
 - If is a custom rule, you can customize the message template however you want
-- Use 
 
 ```php
 $validator = new \Valid8\Validator(

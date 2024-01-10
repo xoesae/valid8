@@ -95,16 +95,31 @@ class Validator
         return $this->errors;
     }
 
+    /**
+     * Define the validator rules.
+     *
+     * @return array
+     */
     protected static function rules(): array
     {
         return [];
     }
 
+    /**
+     * Define the custom error messages.
+     *
+     * @return array
+     */
     protected static function messages(): array
     {
         return [];
     }
 
+    /**
+     * Define the translation for fields.
+     *
+     * @return array
+     */
     protected static function fields(): array
     {
         return [];
