@@ -20,15 +20,16 @@ class Validator
     public function __construct(array $data, array $rules = [], array $messages = [], array $fields = [], string $lang = 'en', string $langDirectory = 'lang')
     {
         $this->data = $data;
-        $this->fields = $fields;
+        $this->fields = empty($fields) ? static::fields() : $fields;;
         $this->rules = empty($rules) ? static::rules() : $rules;
-        $translate = $this->getLang($lang, $langDirectory);
+        $allMessages = $this->getLang($lang, $langDirectory);
+        $initialMessages = empty($messages) ? static::messages() : $messages;
 
-        foreach ($messages as $rule => $message) {
-            $translate[$rule] = $message;
+        foreach ($initialMessages as $rule => $message) {
+            $allMessages[$rule] = $message;
         }
 
-        $this->messages = $translate;
+        $this->messages = $allMessages;
     }
 
     private function appendError(string $field, string $message): void
@@ -95,6 +96,16 @@ class Validator
     }
 
     protected static function rules(): array
+    {
+        return [];
+    }
+
+    protected static function messages(): array
+    {
+        return [];
+    }
+
+    protected static function fields(): array
     {
         return [];
     }

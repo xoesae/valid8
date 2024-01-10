@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Valid8\Test\Examples\CustomMessageRule;
 use Valid8\Test\Examples\CustomRule;
 use Valid8\Test\Examples\RequiredValidator;
+use Valid8\Test\Examples\TranslatedValidator;
 use Valid8\Validator;
 
 class ValidatorTest extends TestCase
@@ -127,6 +128,13 @@ class ValidatorTest extends TestCase
             fields: ['name' => 'nome'],
             lang: 'pt-br',
         );
+        $this->assertFalse($validator->validate());
+        $this->assertSame($validator->errors()['nome'], 'nome é obrigatório.');
+    }
+
+    public function testTranslateCustomValidator(): void
+    {
+        $validator = new TranslatedValidator(['name' => null]);
         $this->assertFalse($validator->validate());
         $this->assertSame($validator->errors()['nome'], 'nome é obrigatório.');
     }
