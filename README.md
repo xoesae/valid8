@@ -107,6 +107,7 @@ $validator->errors();
 # Default rules
 
 - Required: verify if field is present and not empty.
+- Email: verify if field is a valid email address.
 
 # Contributing
 Make a Pull Request for the repository, adding its functionality along with the tests. Make sure your change doesn't break previous versions. :smile:

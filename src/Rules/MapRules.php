@@ -8,6 +8,7 @@ class MapRules
     {
         return match ($name) {
             'required' => Required::class,
+            'email' => Email::class,
         };
     }
 }
